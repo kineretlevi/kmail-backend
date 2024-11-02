@@ -4,7 +4,10 @@
   "description": "- clone repository\r - npm i\r - node index.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,13 @@
   "homepage": "https://github.com/kineretlevi/kmail-backend#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.8.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   }
 }

@@ -1,4 +1,4 @@
-const express = require('express');
+import express, { Request, Response } from 'express';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Basic route
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello, TypeScript with Express!');
 });
 
 // Start the server
