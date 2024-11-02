@@ -1,6 +1,6 @@
 # kmail-backend
 
-## backend of web application of emails messages exchange
+## backend of web application for emails messages exchange
 
 ### installation
 - clone repository
