@@ -1,4 +1,7 @@
 import express, { Request, Response } from 'express';
+import PostgresDataSource from './typeOrm/typeorm';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +14,11 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello, TypeScript with Express!');
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Connect to the database and start the server
+PostgresDataSource.initialize().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}).catch((err) => {
+    console.error("Error starting server: ", err);
 });
