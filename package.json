@@ -1,0 +1,24 @@
+{
+  "name": "kmail-backend",
+  "version": "1.0.0",
+  "description": "- clone repository\r - npm i\r - node index.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kineretlevi/kmail-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kineretlevi/kmail-backend/issues"
+  },
+  "homepage": "https://github.com/kineretlevi/kmail-backend#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
