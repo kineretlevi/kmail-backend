@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Email } from './Email';
+import { Email } from './Email.model';
 
 @Entity()
 export class AttachedFiles {

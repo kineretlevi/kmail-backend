@@ -1,13 +1,21 @@
 import express, { Request, Response } from 'express';
-import PostgresDataSource from './typeOrm/typeorm';
+import "reflect-metadata";
 import * as dotenv from 'dotenv';
+import PostgresDataSource from './typeOrm/typeormConfig';
+import contactRouter from './routes/contacts.router';
+import emailsRouter from './routes/emails.router';
+
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+app.use("/api", contactRouter);
+app.use("/api", emailsRouter);
+
 
 // Basic route
 app.get('/', (req: Request, res: Response) => {

@@ -1,8 +1,8 @@
 import { DataSource } from "typeorm"
-import { User } from "./entities/User"
-import { Contacts } from "./entities/Contacts"
-import { Email } from "./entities/Email"
-import { AttachedFiles } from "./entities/AttachedFiles"
+import { User } from "../models/User.model"
+import { Contacts } from "../models/Contacts.model"
+import { Email } from "../models/Email.model"
+import { AttachedFiles } from "../models/AttachedFiles.model"
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -25,8 +25,8 @@ const PostgresDataSource = new DataSource({
         Email,
         AttachedFiles
     ],
-    synchronize: true,
-    dropSchema: true,
+    // synchronize: true,
+    // dropSchema: true,
 })
 
 // Initialize our pg db
