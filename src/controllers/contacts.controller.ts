@@ -3,6 +3,7 @@ import { getContacts } from '../services/contacts.service'
 
 export const getAllContacts = async (req: Request, res: Response) => {
   try {
+    console.log("i get contacts")
     const contacts = await getContacts(); 
     if (contacts) {
       res.json(contacts);

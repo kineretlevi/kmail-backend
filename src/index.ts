@@ -6,12 +6,17 @@ import contactRouter from './routes/contacts.router';
 import emailsRouter from './routes/emails.router';
 
 dotenv.config();
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 app.use("/api", contactRouter);
 app.use("/api", emailsRouter);
