@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
-import { addNewEmailWithAttachments, getAllEmailsWithAttachments } from '../services/emails.service';
+import { addNewEmailWithAttachments, getAllEmailsUserRecieved, getAllEmailsUserSent, getAllEmailsWithAttachments } from '../services/emails.service';
 
 export const getEmailsWithAttachedFiles = async (req: Request, res: Response) => {
   try {
-    const emailWithFiles = await getAllEmailsWithAttachments(); 
+    const { user } = req.params;
+    const emailWithFiles = await getAllEmailsWithAttachments(user); 
     if (emailWithFiles) {
       res.json(emailWithFiles);
     } else {
@@ -11,6 +12,34 @@ export const getEmailsWithAttachedFiles = async (req: Request, res: Response) =>
     }
   } catch (error) {
     res.status(500).json({ message: "Error fetching emails with attached files"});
+  }
+};
+
+export const getAllEmailsUserSentWithFiles = async (req: Request, res: Response) => {
+  try {
+    const { user } = req.params;
+    const emailUserSentWithFiles = await getAllEmailsUserSent(user); 
+    if (emailUserSentWithFiles) {
+      res.json(emailUserSentWithFiles);
+    } else {
+      res.status(404).json({ message: "Error emails user sent was not found"});
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching emails the user sent with attached files"});
+  }
+};
+
+export const getAllEmailsUserRecievedWithFiles = async (req: Request, res: Response) => {
+  try {
+    const { user } = req.params;
+    const emailUserRecievedWithFiles = await getAllEmailsUserRecieved(user); 
+    if (emailUserRecievedWithFiles) {
+      res.json(emailUserRecievedWithFiles);
+    } else {
+      res.status(404).json({ message: "Error emails user recieved was not found"});
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching emails the user recieved with attached files"});
   }
 };
 
