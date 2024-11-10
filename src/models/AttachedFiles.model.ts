@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Email } from './Email.model';
 
+// Define attached files entity with connection of many to one to the email entity.
 @Entity()
 export class AttachedFiles {
     @PrimaryGeneratedColumn("uuid") 
@@ -13,7 +14,8 @@ export class AttachedFiles {
     fileContent!: Buffer;
 
     @ManyToOne(() => Email, (email) => email.attachedFile, {
-        onDelete: "CASCADE", // Delete attached files if the associated email is deleted
+        // Delete attached files if the associated email is deleted
+        onDelete: "CASCADE", 
     })
     email!: Email;
 }

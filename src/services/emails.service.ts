@@ -5,7 +5,7 @@ import { AttachedFiles } from '../models/AttachedFiles.model';
 export const emailsRepository = PostgresDataSource.getRepository(Email);
 export const attachedFileRepository = PostgresDataSource.getRepository(AttachedFiles);
 
-// Function to fetch all the emails with the attached files from the DB.
+// Function to fetch all the emails with the attached files from the DB using typeOrm.
 export const getAllEmailsWithAttachments = async (user: string): Promise<Email[]> => {
   return await emailsRepository.find({
     where: [
@@ -17,7 +17,7 @@ export const getAllEmailsWithAttachments = async (user: string): Promise<Email[]
   });
 };
 
-// Function to fetch all the emails a specific user sent and their attached files from the DB.
+// Function to fetch all the emails a specific user sent and their attached files from the DB using typeOrm.
 export const getAllEmailsUserSent = async (user: string): Promise<Email[]> => {
   return await emailsRepository.find({
     where: [{ sender: user }],
@@ -26,7 +26,7 @@ export const getAllEmailsUserSent = async (user: string): Promise<Email[]> => {
   });
 };
 
-// Function to fetch all the emails a specific user recived and their attached files from the DB.
+// Function to fetch all the emails a specific user recived and their attached files from the DB using typeOrm.
 export const getAllEmailsUserRecieved = async (user: string): Promise<Email[]> => {
   return await emailsRepository.find({
     where: [{ receiver: user }],
@@ -35,7 +35,7 @@ export const getAllEmailsUserRecieved = async (user: string): Promise<Email[]> =
   });
 };
 
-// Function to add a new email with attached files to the DB.
+// Function to add a new email with attached files to the DB using typeOrm.
 export const addNewEmailWithAttachments = async (sender: string, receiver: string, subject: string, body: string, files: Express.Multer.File[]) => {  
   const email = emailsRepository.create({
     sender,

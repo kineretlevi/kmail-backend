@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { getContacts } from '../services/contacts.service'
 
-export const getAllContacts = async (req: Request, res: Response) => {
+// Controller of fetching the contacts
+export const getAllContacts = async (_req: Request, res: Response) => {
   try {
     const contacts = await getContacts(); 
     if (contacts) {
