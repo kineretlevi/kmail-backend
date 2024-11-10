@@ -3,8 +3,7 @@ import multer from 'multer';
 import { createEmailWithAttachments, getAllEmailsUserRecievedWithFiles, getAllEmailsUserSentWithFiles, getEmailsWithAttachedFiles } from "../controllers/emailsWithAttachments.controller";
 
 const emailsRouter = Router();
-const upload = multer(); // Set up multer for handling file uploads
-
+const upload = multer({ storage: multer.memoryStorage() });
 
 emailsRouter.post("/add-email", upload.array('files'), createEmailWithAttachments)
 emailsRouter.get("/get-emails/sent/:user", getAllEmailsUserSentWithFiles);

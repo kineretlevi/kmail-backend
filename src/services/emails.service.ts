@@ -36,7 +36,7 @@ export const getAllEmailsUserRecieved = async (user: string): Promise<Email[]> =
 };
 
 // Function to add a new email with attached files to the DB.
-export const addNewEmailWithAttachments = async (sender: string, receiver: string, subject: string, body: string, files: Express.Multer.File[]) => {
+export const addNewEmailWithAttachments = async (sender: string, receiver: string, subject: string, body: string, files: Express.Multer.File[]) => {  
   const email = emailsRepository.create({
     sender,
     receiver,
@@ -47,13 +47,14 @@ export const addNewEmailWithAttachments = async (sender: string, receiver: strin
 
   // Save the email to generate an ID
   await emailsRepository.save(email);
-  // Add each file as an attachment
+  
+  
   if (files && files.length > 0) {
     const attachedFiles = files.map((file) => 
       attachedFileRepository.create({
         filename: file.originalname,
         fileContent: file.buffer,
-        email, // Associate this file with the email
+        email,
       })
     );
     // Save all attached files

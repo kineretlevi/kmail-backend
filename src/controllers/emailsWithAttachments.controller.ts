@@ -19,7 +19,7 @@ export const getAllEmailsUserSentWithFiles = async (req: Request, res: Response)
   try {
     const { user } = req.params;
     const emailUserSentWithFiles = await getAllEmailsUserSent(user); 
-    if (emailUserSentWithFiles) {
+    if (emailUserSentWithFiles) {      
       res.json(emailUserSentWithFiles);
     } else {
       res.status(404).json({ message: "Error emails user sent was not found"});
@@ -45,8 +45,8 @@ export const getAllEmailsUserRecievedWithFiles = async (req: Request, res: Respo
 
 export const createEmailWithAttachments = async (req: Request, res: Response) => {
   try {
+    const files = req.files as Express.Multer.File[];
     const {sender, receiver, subject, body} = req.body;
-    const files = req.files as Express.Multer.File[]
 
     const email = await addNewEmailWithAttachments(sender, receiver, subject, body, files)
     res.status(201).json({ message: 'Email created with attachments', email });

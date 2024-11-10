@@ -1,9 +1,17 @@
 import express, { Request, Response } from 'express';
+import multer from 'multer';
+import path from 'path';
 import "reflect-metadata";
 import * as dotenv from 'dotenv';
 import PostgresDataSource from './typeOrm/typeormConfig';
 import contactRouter from './routes/contacts.router';
 import emailsRouter from './routes/emails.router';
+
+
+
+// Set up storage engine for multer
+const storage = multer.memoryStorage(); 
+const upload = multer({ storage });
 
 dotenv.config();
 const cors = require('cors');
@@ -13,6 +21,7 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware to parse JSON requests
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: 'http://localhost:3000'
