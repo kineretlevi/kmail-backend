@@ -25,11 +25,12 @@ const PostgresDataSource = new DataSource({
         Email,
         AttachedFiles
     ],
+    // In first run uncomment those
     // synchronize: true,
     // dropSchema: true,
 })
 
-// Initialize our pg db
+// Initialize our pg DB
 PostgresDataSource.initialize()
     .then(() => {
         console.log("Postgres data Source has been initialized!")

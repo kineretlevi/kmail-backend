@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToOne, JoinColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
 import { AttachedFiles } from './AttachedFiles.model'
 
+// Define email entity with connection of one to many to the attached files entity.
 @Entity()
 export class Email {
     @PrimaryGeneratedColumn("uuid") 

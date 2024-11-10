@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToMany } from 'typeorm';
 import { User } from './User.model';
 
+// Define attached contacts entity with connection of many to many to the user entity.
 @Entity()
 export class Contacts {
     @PrimaryGeneratedColumn("uuid") 

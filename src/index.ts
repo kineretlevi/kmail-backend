@@ -1,17 +1,10 @@
 import express, { Request, Response } from 'express';
 import multer from 'multer';
-import path from 'path';
 import "reflect-metadata";
 import * as dotenv from 'dotenv';
 import PostgresDataSource from './typeOrm/typeormConfig';
 import contactRouter from './routes/contacts.router';
 import emailsRouter from './routes/emails.router';
-
-
-
-// Set up storage engine for multer
-const storage = multer.memoryStorage(); 
-const upload = multer({ storage });
 
 dotenv.config();
 const cors = require('cors');
@@ -32,7 +25,7 @@ app.use("/api", emailsRouter);
 
 
 // Basic route
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
     res.send('Hello, TypeScript with Express!');
 });
 
