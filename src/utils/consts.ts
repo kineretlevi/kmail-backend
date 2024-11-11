@@ -1,0 +1,1 @@
+export const userNameRegex = /^[\w.-]+@kmail\.com$/
